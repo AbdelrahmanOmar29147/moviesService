@@ -1,6 +1,5 @@
 package com.movieApp.moviesService.movies;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.movieApp.moviesService.config.AuthFilter;
 import com.movieApp.moviesService.config.WireMockConfig;
@@ -39,9 +38,6 @@ public class MoviesControllerSecurityTest {
     @Autowired
     AuthFilter authFilter;
 
-    @Autowired
-    ObjectMapper mapper;
-
     @MockBean
     MoviesRepository moviesRepository;
 
@@ -51,7 +47,6 @@ public class MoviesControllerSecurityTest {
     }
 
     String INVALID_TOKEN = "IAMAVERYREALTOKEN";
-    String user = "IAMAVALIDUSER";
     Movie MOVIE_1 = new Movie(
             "1",
             "Rayven Yor",
