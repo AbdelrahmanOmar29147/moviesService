@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest()
 @ContextConfiguration(classes = {WireMockConfig.class})
-public class MoviesControllerSecurityTest {
+class MoviesControllerSecurityTest {
     @Autowired
     WebApplicationContext webApplicationContext;
 
