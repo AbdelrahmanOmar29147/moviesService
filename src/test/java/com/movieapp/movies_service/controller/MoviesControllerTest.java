@@ -1,8 +1,8 @@
-package com.movieApp.moviesService.controller;
+package com.movieapp.movies_service.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.movieApp.moviesService.service.entity.Movie;
-import com.movieApp.moviesService.repository.MoviesRepository;
+import com.movieapp.movie_service.service.entity.Movie;
+import com.movieapp.movie_service.repository.MoviesRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

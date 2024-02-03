@@ -1,4 +1,4 @@
-package com.movieApp.moviesService.config;
+package com.movieapp.movies_service.config;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.springframework.boot.test.context.TestConfiguration;

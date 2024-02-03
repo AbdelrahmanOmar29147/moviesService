@@ -1,6 +1,6 @@
-package com.movieApp.moviesService.component.filter;
+package com.movieapp.movie_service.component.filter;
 
-import com.movieApp.moviesService.client.AuthClient;
+import com.movieapp.movie_service.client.AuthClient;
 import feign.FeignException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -46,7 +46,6 @@ public class AuthFilter extends OncePerRequestFilter {
         HttpEntity<String> entity = new HttpEntity<>(headers);
         try{
             ResponseEntity<String> authResponse = authClient.validate("Bearer " + jwtToken);
-            System.out.println(authResponse.getBody());
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     authResponse.getBody(),
                     null,

@@ -1,10 +1,10 @@
-package com.movieApp.moviesService.controller;
+package com.movieapp.movies_service.controller;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.movieApp.moviesService.component.filter.AuthFilter;
-import com.movieApp.moviesService.config.WireMockConfig;
-import com.movieApp.moviesService.service.entity.Movie;
-import com.movieApp.moviesService.repository.MoviesRepository;
+import com.movieapp.movie_service.component.filter.AuthFilter;
+import com.movieapp.movies_service.config.WireMockConfig;
+import com.movieapp.movie_service.service.entity.Movie;
+import com.movieapp.movie_service.repository.MoviesRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

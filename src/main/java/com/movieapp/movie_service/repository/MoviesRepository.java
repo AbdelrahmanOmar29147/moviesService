@@ -1,6 +1,6 @@
-package com.movieApp.moviesService.repository;
+package com.movieapp.movie_service.repository;
 
-import com.movieApp.moviesService.service.entity.Movie;
+import com.movieapp.movie_service.service.entity.Movie;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

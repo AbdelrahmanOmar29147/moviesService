@@ -1,4 +1,4 @@
-package com.movieApp.moviesService.client;
+package com.movieapp.movie_service.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;

@@ -8,10 +8,10 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.movieApp</groupId>
-	<artifactId>moviesService</artifactId>
+	<groupId>com.movieapp</groupId>
+	<artifactId>movies_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>moviesService</name>
+	<name>movies_service</name>
 	<description>Movies Service for MoviesApp</description>
 	<properties>
 		<java.version>17</java.version>

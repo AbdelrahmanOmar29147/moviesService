@@ -1,7 +1,9 @@
-package com.movieApp.moviesService.service.service;
+package com.movieapp.movie_service.service.service;
 
-import com.movieApp.moviesService.service.entity.Movie;
-import com.movieApp.moviesService.repository.MoviesRepository;
+import com.movieapp.movie_service.component.util.MovieDtoToEntity;
+import com.movieapp.movie_service.service.entity.Movie;
+import com.movieapp.movie_service.repository.MoviesRepository;
+import com.movieapp.movie_service.service.entity.MovieDT0;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
@@ -24,14 +26,14 @@ public class MoviesService {
         return moviesRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
-    public void addMovie(Movie movie) {
-        moviesRepository.insert(movie);
+    public void addMovie(MovieDT0 movie) {
+        Movie movieEntity = MovieDtoToEntity.mapper(movie);
+        moviesRepository.insert(movieEntity);
     }
 
-    public void updateMovie(Movie movie) throws NotFoundException {
-        String id = moviesRepository.findMovieByTitle(movie.getTitle()).orElseThrow(NotFoundException::new).getId();
-        movie.setId(id);
-        moviesRepository.save(movie);
+    public void updateMovie(MovieDT0 movie) throws NotFoundException {
+        Movie movieEntity = moviesRepository.findMovieByTitle(movie.getTitle()).orElseThrow(NotFoundException::new);
+        moviesRepository.save(movieEntity);
     }
 
     public void deleteMovie(String id) throws NotFoundException {

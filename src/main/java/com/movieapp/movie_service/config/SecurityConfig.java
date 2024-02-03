@@ -1,6 +1,6 @@
-package com.movieApp.moviesService.config;
+package com.movieapp.movie_service.config;
 
-import com.movieApp.moviesService.component.filter.AuthFilter;
+import com.movieapp.movie_service.component.filter.AuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

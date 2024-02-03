@@ -1,9 +1,9 @@
-package com.movieApp.moviesService;
+package com.movieapp.movies_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = MoviesServiceApplicationTests.class)
 class MoviesServiceApplicationTests {
 
 	@Test
