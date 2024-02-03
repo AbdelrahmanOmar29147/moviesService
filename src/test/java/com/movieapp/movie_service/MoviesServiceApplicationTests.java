@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MoviesServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void main() {
+		MoviesServiceApplication.main(new String[] {});
 	}
-
 }

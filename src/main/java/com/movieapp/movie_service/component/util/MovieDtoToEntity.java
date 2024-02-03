@@ -13,17 +13,17 @@ public final class MovieDtoToEntity {
                 .builder()
                 .title(movieDT0.getTitle())
                 .overview(movieDT0.getOverview())
-                .vote_average(movieDT0.getVote_average())
-                .original_language(movieDT0.getOriginal_language())
+                .voteAverage(movieDT0.getVoteAverage())
+                .originalLanguage(movieDT0.getOriginalLanguage())
                 .budget(movieDT0.getBudget())
                 .revenue(movieDT0.getRevenue())
                 .runtime(movieDT0.getRuntime())
                 .genres(movieDT0.getGenres())
-                .production_country(movieDT0.getProduction_country())
+                .productionCountry(movieDT0.getProductionCountry())
                 .status(movieDT0.getStatus())
                 .tagline(movieDT0.getTagline())
-                .backdrop_path(movieDT0.getBackdrop_path())
-                .poster_path(movieDT0.getPoster_path())
+                .backdropPath(movieDT0.getBackdropPath())
+                .posterPath(movieDT0.getPosterPath())
                 .build();
     }
 }

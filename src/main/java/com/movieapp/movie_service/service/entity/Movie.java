@@ -17,15 +17,15 @@ public class Movie {
     @Indexed(unique = true)
     private String title;
     private String overview;
-    private Long vote_average;
-    private String original_language;
+    private Long voteAverage;
+    private String originalLanguage;
     private Integer budget;
     private Integer revenue;
     private Integer runtime;
     private String[] genres;
-    private String production_country;
+    private String productionCountry;
     private String status;
     private String tagline;
-    private String backdrop_path;
-    private String poster_path;
+    private String backdropPath;
+    private String posterPath;
 }

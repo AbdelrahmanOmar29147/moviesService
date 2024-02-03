@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -39,11 +37,7 @@ public class AuthFilter extends OncePerRequestFilter {
             response.setStatus(403);
             return;
         }
-
         jwtToken = authHeader.substring(7);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(jwtToken);
-        HttpEntity<String> entity = new HttpEntity<>(headers);
         try{
             ResponseEntity<String> authResponse = authClient.validate("Bearer " + jwtToken);
             Authentication authentication = new UsernamePasswordAuthenticationToken(
@@ -57,7 +51,6 @@ public class AuthFilter extends OncePerRequestFilter {
             }
         } catch (FeignException.FeignClientException e) {
             response.setStatus(403);
-            return;
         }
     }
 }

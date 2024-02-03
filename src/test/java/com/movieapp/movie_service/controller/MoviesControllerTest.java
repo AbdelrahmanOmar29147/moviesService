@@ -129,7 +129,7 @@ class MoviesControllerTest {
     void addMovie_success() throws Exception {
         Movie movie = Movie.builder()
                 .title("Harry Potter")
-                .backdrop_path("/Harry Backdrop")
+                .backdropPath("/Harry Backdrop")
                 .budget(20000)
                 .build();
         Mockito.when(moviesRepository.insert(movie)).thenReturn(movie);
@@ -147,7 +147,7 @@ class MoviesControllerTest {
         Movie movie = Movie.builder()
                 .id("4")
                 .title("Harry Potter")
-                .backdrop_path("/Harry Backdrop")
+                .backdropPath("/Harry Backdrop")
                 .budget(20000)
                 .build();
         Mockito.when(moviesRepository.findMovieByTitle("Harry Potter")).thenReturn(Optional.of(movie));
