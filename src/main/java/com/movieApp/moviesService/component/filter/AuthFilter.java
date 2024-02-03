@@ -1,5 +1,7 @@
-package com.movieApp.moviesService.config;
+package com.movieApp.moviesService.component.filter;
 
+import com.movieApp.moviesService.client.AuthClient;
+import feign.FeignException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,15 +10,12 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -26,9 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthFilter extends OncePerRequestFilter {
 
-    private final String AUTH_URL = "http://localhost:8080/api/v1/auth/validate";
-
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final AuthClient authClient;
 
     @Override
     protected void doFilterInternal(
@@ -48,7 +45,8 @@ public class AuthFilter extends OncePerRequestFilter {
         headers.setBearerAuth(jwtToken);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         try{
-            ResponseEntity<String> authResponse = restTemplate.exchange(AUTH_URL, HttpMethod.GET, entity, String.class);
+            ResponseEntity<String> authResponse = authClient.validate("Bearer " + jwtToken);
+            System.out.println(authResponse.getBody());
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     authResponse.getBody(),
                     null,
@@ -58,7 +56,7 @@ public class AuthFilter extends OncePerRequestFilter {
             if(authResponse.getStatusCode().is2xxSuccessful()) {
                 filterChain.doFilter(request, response);
             }
-        } catch (HttpClientErrorException e) {
+        } catch (FeignException.FeignClientException e) {
             response.setStatus(403);
             return;
         }

@@ -1,15 +1,13 @@
-package com.movieApp.moviesService.movies;
+package com.movieApp.moviesService.service.service;
 
+import com.movieApp.moviesService.service.entity.Movie;
+import com.movieApp.moviesService.repository.MoviesRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

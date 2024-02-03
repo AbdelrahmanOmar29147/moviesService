@@ -1,8 +1,10 @@
-package com.movieApp.moviesService.movies;
+package com.movieApp.moviesService.controller;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.movieApp.moviesService.config.AuthFilter;
+import com.movieApp.moviesService.component.filter.AuthFilter;
 import com.movieApp.moviesService.config.WireMockConfig;
+import com.movieApp.moviesService.service.entity.Movie;
+import com.movieApp.moviesService.repository.MoviesRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -46,7 +48,7 @@ public class MoviesControllerSecurityTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).addFilter(authFilter).build();
     }
 
-    String INVALID_TOKEN = "IAMAVERYREALTOKEN";
+    String TOKEN = "IAMAVERYREALTOKEN";
     Movie MOVIE_1 = new Movie(
             "1",
             "Rayven Yor",
@@ -67,13 +69,13 @@ public class MoviesControllerSecurityTest {
 
     @Test
     void getMovieWithValidToken() throws Exception {
-        this.wireMockServer.stubFor(get("/api/v1/auth/validate").willReturn(aResponse().withStatus(200)));
+        this.wireMockServer.stubFor(get(urlEqualTo("/api/v1/auth/validate")).willReturn(aResponse().withStatus(200)));
         Mockito.when(moviesRepository.findById("1")).thenReturn(Optional.ofNullable(MOVIE_1));
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/api/v1/movies/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .header("Authorization", "Bearer " + INVALID_TOKEN)        )
+                        .header("Authorization", "Bearer " + TOKEN)        )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.title").value("Rayven Yor"));
@@ -90,9 +92,11 @@ public class MoviesControllerSecurityTest {
 
     @Test
     void getMovieInvalidToken_failure() throws Exception {
+        this.wireMockServer.stubFor(get(urlEqualTo("/api/v1/auth/validate")).willReturn(aResponse().withStatus(403)));
+
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/v1/movies/2")
-                        .header("Authorization", "Bearer " + INVALID_TOKEN)
+                        .header("Authorization", "Bearer " + TOKEN)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError());
     }

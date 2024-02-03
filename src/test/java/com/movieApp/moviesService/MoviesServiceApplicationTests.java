@@ -10,9 +10,4 @@ class MoviesServiceApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	public void applicationContextTest() {
-		MoviesServiceApplication.main(new String[] {});
-	}
-
 }
