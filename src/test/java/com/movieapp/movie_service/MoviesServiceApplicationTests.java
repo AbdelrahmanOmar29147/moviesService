@@ -1,4 +1,4 @@
-package com.movieapp.movies_service;
+package com.movieapp.movie_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.movieapp.movies_service.controller;
+package com.movieapp.movie_service.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.movieapp.movie_service.service.entity.Movie;
