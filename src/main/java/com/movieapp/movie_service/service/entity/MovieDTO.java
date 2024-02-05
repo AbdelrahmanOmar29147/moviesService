@@ -3,7 +3,7 @@ package com.movieapp.movie_service.service.entity;
 import lombok.Data;
 
 @Data
-public class MovieDT0 {
+public class MovieDTO {
 
     private String title;
     private String overview;

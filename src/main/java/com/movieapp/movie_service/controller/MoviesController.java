@@ -1,7 +1,7 @@
 package com.movieapp.movie_service.controller;
 
 import com.movieapp.movie_service.service.entity.Movie;
-import com.movieapp.movie_service.service.entity.MovieDT0;
+import com.movieapp.movie_service.service.entity.MovieDTO;
 import com.movieapp.movie_service.service.service.MoviesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -31,12 +31,12 @@ public class MoviesController {
     }
 
     @PostMapping
-    public void addMovie(@RequestBody MovieDT0 movie)  {
+    public void addMovie(@RequestBody MovieDTO movie)  {
         moviesService.addMovie(movie);
     }
 
     @PutMapping
-    public void updateMovie(@RequestBody MovieDT0 movie) throws ChangeSetPersister.NotFoundException {
+    public void updateMovie(@RequestBody MovieDTO movie) throws ChangeSetPersister.NotFoundException {
         moviesService.updateMovie(movie);
     }
 

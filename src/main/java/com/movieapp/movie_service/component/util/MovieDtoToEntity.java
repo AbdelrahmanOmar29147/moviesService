@@ -1,14 +1,14 @@
 package com.movieapp.movie_service.component.util;
 
 import com.movieapp.movie_service.service.entity.Movie;
-import com.movieapp.movie_service.service.entity.MovieDT0;
+import com.movieapp.movie_service.service.entity.MovieDTO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class MovieDtoToEntity {
 
-    public static Movie mapper(MovieDT0 movieDT0){
+    public static Movie mapper(MovieDTO movieDT0){
         return Movie
                 .builder()
                 .title(movieDT0.getTitle())
